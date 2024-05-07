@@ -1,0 +1,50 @@
+﻿<Window x:Class="ProjektTOWAM.Views.FinalWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektTOWAM.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="FinalWindow" Height="470" Width="452" x:Name="finalWindow"
+        xmlns:vm="clr-namespace:ProjektTOWAM.ViewModels">
+    <Window.DataContext>
+        <vm:FinalWindowViewModel/>
+    </Window.DataContext>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Label  FontSize="15" FontWeight="DemiBold" VerticalContentAlignment="Center" Margin="3">Imię i nazwisko:</Label>
+            <TextBlock  VerticalAlignment="Center" Margin="3">
+                <Run Text="{Binding Pacjent.Imie}"/>
+                <Run Text="{Binding Pacjent.Nazwisko}"/>
+            </TextBlock>
+        </StackPanel>
+        <!--<ListBox Grid.Row="1" Height="200" Margin="3"></ListBox>-->
+        <TextBox Grid.Row="1" Text="{Binding Diagnozaa, UpdateSourceTrigger=PropertyChanged}" Height="200" Margin="3" IsReadOnly="True"/>
+        <Label Grid.Row="2" FontSize="15" FontWeight="DemiBold" Content="Kometnarz:"></Label>
+        <TextBox Grid.Row="3" Text="{Binding KomentarzLekarzaTextBox, UpdateSourceTrigger=PropertyChanged}" Height="100" Margin="3"></TextBox>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="5" Command="{Binding ZapiszCommand}" CommandParameter="{Binding ElementName=finalWindow}" Height="30">Zatwierdź</Button>
+            <Button Grid.Column="1" Margin="5" Height="30" Command="{Binding ZamknijCommand}" CommandParameter="{Binding ElementName=finalWindow}">Odrzuć</Button>
+        </Grid>
+
+
+    </Grid>
+
+
+
+
+
+
+</Window>

@@ -1,0 +1,24 @@
+﻿<Window x:Class="ProjektTOWAM.Views.FifthWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjektTOWAM.Views" ResizeMode="NoResize"
+        mc:Ignorable="d" x:Name="fifth_Window" WindowStartupLocation="CenterScreen"
+        xmlns:vm="clr-namespace:ProjektTOWAM.ViewModels"
+        Title="FifthWindow" Height="258" Width="307">
+    <Window.DataContext>
+        <vm:FifthWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Wybór pacjenta:" VerticalAlignment="Center" Margin="3" FontWeight="DemiBold"/>
+        <ListBox Grid.Row="1" Margin="3" ItemsSource="{Binding Pacjenci}" SelectedItem="{Binding WybranyPacjent}" DisplayMemberPath="ImieNazwiskoEmail"/>
+        <Button Grid.Row="2" HorizontalAlignment="Center" Margin="3" Content="Usuń" Width="100" Command="{Binding UsunCommand}" CommandParameter="{Binding ElementName=fifth_Window}"/>
+    </Grid>
+</Window>
